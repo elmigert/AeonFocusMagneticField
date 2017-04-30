@@ -1,0 +1,7 @@
+/home/student/catkin_ws/src/a_vector_field/src/avectorfield.cpp: In member function ‘bool a_vector_field::AVectorField::load(const QString&, const QString&)’:
+/home/student/catkin_ws/src/a_vector_field/src/avectorfield.cpp:186:20: error: incomplete type ‘QDir’ used in nested name specifier
+   QString myPath = QDir::currentPath();
+                    ^
+make[2]: *** [CMakeFiles/a_vector_field.dir/src/avectorfield.cpp.o] Error 1
+make[1]: *** [CMakeFiles/a_vector_field.dir/all] Error 2
+make: *** [all] Error 2

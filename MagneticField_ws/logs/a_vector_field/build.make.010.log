@@ -1,0 +1,4 @@
+[35m[1mScanning dependencies of target a_vector_field
+[0m[ 50%] [32mBuilding CXX object CMakeFiles/a_vector_field.dir/src/avectorfield.cpp.o
+[0m[31m[1mLinking CXX executable /home/student/catkin_ws/devel/.private/a_vector_field/lib/a_vector_field/a_vector_field
+[0m[100%] Built target a_vector_field

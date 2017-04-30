@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<launch>
+
+<arg name="use_sim_time" default="true"/>
+<!--<arg name="world" default="gazebo_ros_range"/>
+<arg name="debug" default="false"/>
+<arg name="physics" default="ode"/>
+-->
+<group if="$(arg use_sim_time)">
+<param name="/use_sim_time" value="true" />
+</group>
+
+
+<!-- <include file="$(find husky_gazebo)/launch/husky_empty_world.launch"> -->
+
+
+<!-- <include file="$(find husky_highlevel_controller)/worlds/singlePillar.world"> -->
+
+<!--<arg name="world_name" value="$(find husky_highlevel_controller)/worlds/singlePillar.world"/>
+
+<arg name="laser_enabled" default="true"/> -->
+
+<!--
+<arg name="debug" value="$(arg debug)"/>
+<arg name="physics" value="$(arg physics)"/>
+
+
+</include>-->
+
+<node name="keyboard_entry" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py"/> 
+
+<!--<node name="husky_highlevel_controller" pkg="husky_highlevel_controller" type="husky_highlevel_controller" output="screen">
+	<rosparam command="load" file="$(find husky_highlevel_controller)/config/config.yaml" />
+</node> -->
+
+
+<node name="Localization_ekf" pkg="robot_localization" type="ekf_localization_node">
+<rosparam command="load" file="$(find husky_control)/config/localization.yaml" />
+</node>
+
+<node name="spawn_husky_model" pkg="gazebo_ros" type="spawn_model"
+    args="$(arg robot_initial_pose) -unpause -urdf -param robot_description -model mobile_base"/>
+
+<node name="rosbag" pkg = "rosbag" type ="play" args="--clock $(find husky_highlevel_controller)/husky_navigation.bag" output ="screen" />
+
+<arg name="laser_enabled" default="true"/>
+  <arg name="ur5_enabled" default="false"/>
+  <arg name="kinect_enabled" default="false"/>
+  <arg name="robot_initial_pose" default="$(optenv ROBOT_INITIAL_POSE)"/>
+  <arg name="husky_gazebo_description" default="$(optenv HUSKY_GAZEBO_DESCRIPTION)"/>
+  <arg name="ur5_control_yaml_file" default="$(find husky_control)/config/control_ur5.yaml"/>
+
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(arg husky_gazebo_description)'
+    laser_enabled:=$(arg laser_enabled)
+    ur5_enabled:=$(arg ur5_enabled)
+    kinect_enabled:=$(arg kinect_enabled)
+    " />
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+
+
+
+
+
+
+<node name="rviz" pkg="rviz" type="rviz" />
+
+
+
+
+</launch>

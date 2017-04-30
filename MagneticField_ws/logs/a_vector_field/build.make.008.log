@@ -1,0 +1,36 @@
+[35m[1mScanning dependencies of target a_vector_field
+[0m[ 50%] [32mBuilding CXX object CMakeFiles/a_vector_field.dir/src/avectorfield.cpp.o
+In file included from /opt/ros/indigo/include/ros/ros.h:40:0,
+                 from /home/student/catkin_ws/src/a_vector_field/include/a_vector_field/avectorfield.h:17,
+                 from /home/student/catkin_ws/src/a_vector_field/src/avectorfield.cpp:11:
+/home/student/catkin_ws/src/a_vector_field/src/avectorfield.cpp: In member function ‘bool a_vector_field::AVectorField::load(const QString&, const QString&)’:
+/opt/ros/indigo/include/ros/console.h:352:61: error: cannot bind ‘std::basic_ostream<char>’ lvalue to ‘std::basic_ostream<char>&&’
+     __rosconsole_print_stream_at_location_with_filter__ss__ << args; \
+                                                             ^
+/opt/ros/indigo/include/ros/console.h:357:5: note: in expansion of macro ‘ROSCONSOLE_PRINT_STREAM_AT_LOCATION_WITH_FILTER’
+     ROSCONSOLE_PRINT_STREAM_AT_LOCATION_WITH_FILTER(0, args)
+     ^
+/opt/ros/indigo/include/ros/console.h:394:7: note: in expansion of macro ‘ROSCONSOLE_PRINT_STREAM_AT_LOCATION’
+       ROSCONSOLE_PRINT_STREAM_AT_LOCATION(args); \
+       ^
+/opt/ros/indigo/include/ros/console.h:564:43: note: in expansion of macro ‘ROS_LOG_STREAM_COND’
+ #define ROS_LOG_STREAM(level, name, args) ROS_LOG_STREAM_COND(true, level, name, args)
+                                           ^
+/opt/ros/indigo/include/rosconsole/macros_generated.h:111:31: note: in expansion of macro ‘ROS_LOG_STREAM’
+ #define ROS_INFO_STREAM(args) ROS_LOG_STREAM(::ros::console::levels::Info, ROSCONSOLE_DEFAULT_NAME, args)
+                               ^
+/home/student/catkin_ws/src/a_vector_field/src/avectorfield.cpp:189:3: note: in expansion of macro ‘ROS_INFO_STREAM’
+   ROS_INFO_STREAM("Current Path in: " <<  QDir::currentPath());
+   ^
+In file included from /usr/include/c++/4.8/iterator:64:0,
+                 from /usr/include/qt4/QtCore/qlist.h:50,
+                 from /usr/include/qt4/QtCore/qvector.h:48,
+                 from /usr/include/qt4/QtCore/QVector:1,
+                 from /home/student/catkin_ws/src/a_vector_field/include/a_vector_field/avectorfield.h:14,
+                 from /home/student/catkin_ws/src/a_vector_field/src/avectorfield.cpp:11:
+/usr/include/c++/4.8/ostream:602:5: error:   initializing argument 1 of ‘std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&&, const _Tp&) [with _CharT = char; _Traits = std::char_traits<char>; _Tp = QString]’
+     operator<<(basic_ostream<_CharT, _Traits>&& __os, const _Tp& __x)
+     ^
+make[2]: *** [CMakeFiles/a_vector_field.dir/src/avectorfield.cpp.o] Error 1
+make[1]: *** [CMakeFiles/a_vector_field.dir/all] Error 2
+make: *** [all] Error 2

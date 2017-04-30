@@ -1,0 +1,1 @@
+/usr/bin/c++ -std=c++11 -fPIC -O3 -DNDEBUG   -shared -Wl,-soname,libgtest_main.so -o libgtest_main.so CMakeFiles/gtest_main.dir/src/gtest_main.cc.o  -L/home/student/catkin_ws/build/a_vector_field/gtest/src -lpthread libgtest.so -lpthread -Wl,-rpath,/home/student/catkin_ws/build/a_vector_field/gtest/src:/home/student/catkin_ws/build/a_vector_field/gtest 
